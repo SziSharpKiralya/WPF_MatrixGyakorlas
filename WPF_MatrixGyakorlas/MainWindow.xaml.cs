@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Data.Common;
-using System.Text;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPF_MatrixGyakorlas
 {
@@ -47,7 +40,7 @@ namespace WPF_MatrixGyakorlas
 
 		private void btnSave_Click(object sender, RoutedEventArgs e)
 		{
-
+			SaveFile();
 		}
 		
 		private void DeleteAllCells()
@@ -122,6 +115,39 @@ namespace WPF_MatrixGyakorlas
 						textbox.IsEnabled = false;
 					}
 				}
+			}
+		}
+
+		private void SaveFile()
+		{
+			List<string> list = new List<string>();
+			string line = "";
+			int i = 0;
+
+			foreach (var item in grid_bingo.Children)
+			{
+				if (item is TextBox)
+				{
+					TextBox textboxChildren = (TextBox)item;
+					line += $"{textboxChildren.Text};";
+					i++;
+				}
+				if (i == 5)
+				{
+					line = line.Remove(line.Length - 1);
+					list.Add(line);
+					line = "";
+					i = 0;
+				}
+			}
+			try
+			{
+				File.WriteAllLines($"{txtbox_input.Text}", list);
+				MessageBox.Show("Az állomány mentése sikeres");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
 			}
 		}
 
