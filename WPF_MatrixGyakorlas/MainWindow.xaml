@@ -94,7 +94,8 @@
 					Margin="5"
 					Click="btnCreate_Click">
 			</Button>
-			<Grid Grid.Row="2"
+			<Grid x:Name="grid_bingo"
+				  Grid.Row="2"
 				  Margin="5">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />
