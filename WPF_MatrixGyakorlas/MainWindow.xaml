@@ -5,8 +5,139 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_MatrixGyakorlas"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+		Background="Transparent"
+		ResizeMode="NoResize"
+		WindowStyle="None"
+		Height="430"
+		Width="300"
+		Title="">
 
-    </Grid>
+	<Window.Resources>
+		<SolidColorBrush x:Key="Main"
+						 Color="Azure" />
+		<SolidColorBrush x:Key="Buttons"
+						 Color="AntiqueWhite" />
+		<SolidColorBrush x:Key="Text"
+						 Color="Black" />
+	</Window.Resources>
+
+	<Border Background="{StaticResource Main}"
+			MouseLeftButtonDown="console_MouseLeftButtonDown">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="40" />
+				<RowDefinition Height="0.35*" />
+				<RowDefinition Height="2*" />
+				<RowDefinition Height="0.35*" />
+				<RowDefinition Height="0.35*" />
+			</Grid.RowDefinitions>
+			
+			<Grid Background="Transparent"
+				  Grid.Row="0"
+				  Margin="5">
+				<Label Content="Bingo"
+					   Width="120"
+					   Height="30"
+					   FontSize="18"
+					   FontWeight="Bold"
+					   Margin="0,0,0,0"
+					   Foreground="Black"
+					   FontFamily="Broadway"
+					   VerticalAlignment="Center"
+					   HorizontalAlignment="Left"
+					   VerticalContentAlignment="Center"
+					   HorizontalContentAlignment="Left" />
+				<Button Content="❌"
+						Width="36"
+						Height="24"
+						FontSize="12"
+						Margin="0,0,0,0"
+						Background="RosyBrown"
+						Foreground="White"
+						BorderThickness="0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Right"
+						Click="btnClose_Click" />
+				<Button Content="▬"
+						Width="36"
+						Height="24"
+						FontSize="12"
+						Margin="0,0,40,0"
+						Background="Gray"
+						Foreground="White"
+						BorderThickness="0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Right"
+						Click="btnSize_Click" />
+				<Button Content="___"
+						Width="36"
+						Height="24"
+						FontSize="12"
+						Margin="0,0,80,0"
+						Background="Gray"
+						Foreground="White"
+						BorderThickness="0"
+						VerticalAlignment="Center"
+						HorizontalAlignment="Right"
+						Click="btnSleep_Click" />
+			</Grid>
+			<Button Grid.Row="1"
+					Grid.Column="0"
+					Content="Kártya generálása"
+					FontSize="16"
+					Background="{StaticResource Buttons}"
+					Foreground="{StaticResource Text}"
+					FontFamily="Broadway"
+					BorderThickness="0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Margin="5"
+					Click="btnCreate_Click">
+			</Button>
+			<Grid Grid.Row="2"
+				  Margin="5">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+			</Grid>
+			<TextBox x:Name="txtbox_input"
+					 Grid.Row="3"
+					 Text="bingo.txt"
+					 FontSize="16"
+					 Background="{StaticResource Buttons}"
+					 Foreground="{StaticResource Text}"
+					 FontFamily="Broadway"
+					 BorderThickness="2"
+					 VerticalAlignment="Stretch"
+					 HorizontalAlignment="Stretch"
+					 HorizontalContentAlignment="Center"
+					 VerticalContentAlignment="Center"
+					 Margin="5" />
+			<Button Grid.Row="4"
+					Grid.Column="0"
+					Content="Mentés"
+					FontSize="16"
+					Background="{StaticResource Buttons}"
+					Foreground="{StaticResource Text}"
+					FontFamily="Broadway"
+					BorderThickness="0"
+					VerticalAlignment="Stretch"
+					HorizontalAlignment="Stretch"
+					Margin="5"
+					Click="btnSave_Click">
+			</Button>
+		</Grid>
+	</Border>
 </Window>
